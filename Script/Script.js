@@ -2,7 +2,7 @@ let n1, n2, n3, n4;
 let N1, N2, N3, N4;
 
 let pica = 0;
-let fila = 0;
+let fija = 0;
 let turnos = 0;
 
 function Num() {
@@ -11,6 +11,7 @@ function Num() {
 
     console.log(Numero);
 
+    // desfracmentar numero aleatorio
     n1 = parseInt(Numero / 1000); Numero -= n1 * 1000;
     n2 = parseInt(Numero / 100); Numero -= n2 * 100;
     n3 = parseInt(Numero / 10); Numero -= n3 * 10;
@@ -36,6 +37,7 @@ function Game() {
         return;
     }
 
+    // desfracmentar numero ingresado
     N1 = parseInt(numero / 1000); numero -= N1 * 1000;
     N2 = parseInt(numero / 100); numero -= N2 * 100;
     N3 = parseInt(numero / 10); numero -= N3 * 10;
@@ -49,21 +51,21 @@ function Game() {
     if (N3 == n3) pica++;
     if (N4 == n4) pica++;
 
-    if (n2 == N1 || n3 == N1 || n4 == N1) fila++;
-    if (n1 == N2 || n3 == N2 || n4 == N2) fila++;
-    if (n1 == N3 || n2 == N3 || n4 == N3) fila++;
-    if (n1 == N4 || n2 == N4 || n3 == N4) fila++;
+    if (n2 == N1 || n3 == N1 || n4 == N1) fija++;
+    if (n1 == N2 || n3 == N2 || n4 == N2) fija++;
+    if (n1 == N3 || n2 == N3 || n4 == N3) fija++;
+    if (n1 == N4 || n2 == N4 || n3 == N4) fija++;
 
 
     let tableBody = document.querySelector("#resultados tbody");
     let newRow = document.createElement('tr');
 
-    // Añadir las celdas con los valores: Número de intento, Número ingresado, Picas y Filas
+    // Añadir las celdas con los valores: Número de intento, Número ingresado, Picas y fijas
     newRow.innerHTML = `
         <td>${turnos}</td>
         <td>${N1}${N2}${N3}${N4}</td>
         <td>${pica}</td>
-        <td>${fila}</td>
+        <td>${fija}</td>
     `;
 
     tableBody.appendChild(newRow);  
@@ -75,9 +77,9 @@ function Game() {
         return;
     }
 
-    // Reiniciar picas y filas para el próximo intento
+    // Reiniciar picas y fijas para el próximo intento
     pica = 0;
-    fila = 0;
+    fija = 0;
 }
 
 Num();
